@@ -1,0 +1,48 @@
+h2{
+    margin-top: 3em;
+    font-size:bold;
+    font-size: 3em;
+    color:#4b4276;
+}
+
+.student-details {
+  font-size: 2em;
+  text-align: center;
+ color:#4b4276;
+ margin-bottom:30px;
+}
+table, td,th {
+  border: 2px solid black;
+}
+#myTable{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+
+}
+#myTable td, #myTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#myTable tr:nth-child(even){background-color: #f2f2f2;}
+#myTable tr:hover {background-color: #ddd;}
+#myTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: grey;
+  color: white;
+}
+#myTable td input{
+  padding:5px;
+}
+#myTable td a:link{
+  
+        text-decoration: none;
+}
+td a{
+    color: black;
+}
+#myTable tr th{
+    background-color:#4b4276;
+}

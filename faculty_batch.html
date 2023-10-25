@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty Batches</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Faculty Batches</h1>
+    <ul>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Faculty Batches</title>
+            <style>
+                /* Styles here */
+            </style>
+        </head>
+        <body>
+            <h1>Faculty Batches</h1>
+            <ul>
+                {% for batch in batches %}
+                <li><a href="/faculty/dashboard/{{ batch['batch_id'] }}">{{ batch['batch_name'] }}</a></li>
+                {% endfor %}
+            </ul>
+            <footer>
+                <p>&copy; TUSHAR | 2023</p>
+            </footer>
+        </body>
+        </html>
+        
+    </ul>
+</body>
+</html>

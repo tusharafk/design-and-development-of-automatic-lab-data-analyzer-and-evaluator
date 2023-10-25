@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... Rest of your head content ... -->
+    <title>Enter Observations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/experiment.css') }}">	
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        /* Apply some basic styles to the form */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.main_content {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+.heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4b4276;;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4b4276;;
+}
+
+/* Additional styles for specific elements */
+#observationSets {
+    margin-top: 20px;
+   background-color: #4b4276;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#add
+#observationSets {
+    margin-top: 5px;
+    background-color: #4b4276;
+    padding: 5px;
+    border-radius: 5px;
+    overflow-x: auto; /* Add horizontal scrolling for small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5px;
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4b4276;
+    color: #fff;
+}
+
+textarea {
+    width: 100%;
+    height: 30px;
+    padding: 4px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Adjust the input fields inside the table cells */
+td textarea {
+    width: 100%;
+    height: 30%;
+    padding: 3px;
+    margin: 0;
+    border: none;
+    resize: none; /* Prevent resizing of the text area */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+
+.logo {
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	width: 100pxpx; /* Adjust the size as needed */
+	height: 100px; /* Adjust the size as needed */
+}
+
+.sidebar {
+    /* Add styles to center the logo and text */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-top: 100px; /* Adjust as needed */
+}
+
+    </style>
+</head>
+<body>
+    <!-- ... Sidebar and other content ... -->
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <img src="{{url_for('static',filename="images.png")}}" alt="Logo" class="logo">
+            <h2> Physics LAB</h2>
+            <ul>
+                <li><a href={{url_for('measure2')}}><i class="fas fa-address-card"></i>Observation</a></li>
+                <li><a href={{url_for('indexpage')}}><i class="fas fa-blog"></i>Index</a></li>
+            </ul>
+            <!--<div class="social_media">
+                <a hr ef="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>-->
+        </div>
+
+    <div class="main_content">
+        <div class="header">Experiment NO-1:Single convertivile</div>
+        <div class="info">
+            <div class="heading">Enter observation</div>
+            <form method="POST" action="{{ url_for('single_can') }}" id="observationsForm" onsubmit="return validateForm()">
+                <table id="observationSets">
+                    <label for="num_sets">Number of Observation Sets:</label>
+                    <input type="number" id="num_sets" name="num_sets" required>
+                    <br>
+                    <thead>
+                        <tr>
+                            <th>Observation Set</th>
+                            <th>Length (mm)</th>
+                            <th>Width (mm)</th>
+                            <th>Thickness (mm)</th>
+                            <th>Weight (N)</th>
+                            <th>Deflection (mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Observation sets will be dynamically added here using JavaScript -->
+                    </tbody>
+                </table>
+                <input type="submit" value="Submit" class="btn">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#num_sets').change(function() {
+                var numSets = parseInt($(this).val());
+
+                // Clear existing observation sets
+                $('#observationSets tbody').empty();
+
+                // Create observation set rows dynamically
+                for (var i = 1; i <= numSets; i++) {
+                    var observationSetHTML = `
+                        <tr>
+                            <td>Observation Set ${i}</td>
+                            <td><input type="text" name="length_${i}" required></td>
+                            <td><input type="text" name="width_${i}" required></td>
+                            <td><input type="text" name="thickness_${i}" required></td>
+                            <td><input type="text" name="weight_${i}" required></td>
+                            <td><input type="text" name="deflection_${i}" required></td>
+                        </tr>
+                    `;
+
+                    $('#observationSets tbody').append(observationSetHTML);
+                }
+            });
+        });
+
+        function validateForm() {
+            var numSets = parseInt($('#num_sets').val());
+
+            for (var i = 1; i <= numSets; i++) {
+                var length = $(`input[name="length_${i}"]`).val();
+                var width = $(`input[name="width_${i}"]`).val();
+                var thickness = $(`input[name="thickness_${i}"]`).val();
+                var weight = $(`input[name="weight_${i}"]`).val();
+                var deflection = $(`input[name="deflection_${i}"]`).val();
+
+                if (!isValidNumber(length) || !isValidNumber(width) || !isValidNumber(thickness) || !isValidNumber(weight) || !isValidNumber(deflection)) {
+                    $('#error-message').text('Please enter valid numbers (integer or float) for observations');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function isValidNumber(value) {
+            var number = parseFloat(value);
+            return !isNaN(number) && Number.isFinite(number) && !isNaN(parseInt(value, 10));
+        }
+    </script>
+</body>
+</html>

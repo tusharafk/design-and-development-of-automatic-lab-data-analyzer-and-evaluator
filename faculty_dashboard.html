@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100pxpx; /* Adjust the size as needed */
+            height: 100px; /* Adjust the size as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Teacher Dashboard</h1>
+    <img src="{{url_for('static',filename="images.png")}}" alt="Logo" class="logo">
+    {% for batch_id, students in batch_students.items() %}
+    <h2>{{ batch_id }}</h2>
+    {% if students %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Student USN</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td><a href="/student_experiments/{{ student.usn }}">{{ student.usn }}</a></td>
+                        <td>{{ student['name'] }}</td>
+                        <td>{{ student['gmail'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No students assigned to this batch.</p>
+    {% endif %}
+{% endfor %}
+
+</body>
+</html>
+
+
